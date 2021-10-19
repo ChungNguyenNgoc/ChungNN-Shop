@@ -1,0 +1,304 @@
+:root {
+    --primary--color: #EE4D2D;
+    /* --primary--color: #06bbd3; */
+    /* --primary--color-rgba: rgb(238, 75, 43); */
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --text-footer: rgba(0,0,0,.54);
+    --border-color: #dbdbdb;
+    --star-gold-color: #ffce3d;
+    --header-height: 120px;
+    --navbar-height: 34px;
+    --header-with-search-height: calc(var(--header-height) - var(--navbar-height))
+}
+
+* {
+    box-sizing: inherit; /* để nó kế thừa box-sizing: border-box; */
+}
+
+html {
+    font-size: 62.5%; /* 100%; 100% là 16px, 62.5% là 10px (tương ứng với 1rem = 10px luôn) */
+    line-height: 1.6rem; /* 16px */
+    font-family: 'Roboto', sans-serif; /* bỏ đi chân chữ */
+    box-sizing: border-box;
+}
+
+/* Responsive */
+
+.grid {
+    width: 1200px;
+    max-width: 100%; /* kích thước width tối đa là 1200 */
+    margin: 0 auto; /* căng giữa khối này khi nằm trong khối khác */
+}
+
+.grid__full-width {
+    width: 100%;
+}
+
+.grid__row { /* những thẻ cùng nằm rong class này sẽ cùng nằm trên 1 hàng ngang */
+    display: flex;
+    flex-wrap: wrap; /* tự động nhảnh xuống hàng khi width vượt quá .grid__row */
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+/* Test (sau này sẽ sữa lại)*/
+.grid__column-2 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 16.66666666667%;
+}
+
+.grid__column-2-4 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
+}
+
+.grid__column-3 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 25%;
+    text-align: center;
+}
+
+.grid__column-4 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 33.33333333333%;
+}
+
+.grid__column-5 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 41.66666666667%;
+}
+
+.grid__column-6 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 50%;
+}
+
+.grid__column-7 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 58.33333333333%;
+}
+
+.grid__column-10 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 83.33333333333%;
+}
+
+
+
+/* Animation */ 
+/* Đối tượng trên web đc apply cái animation này thì bắt đầu sẽ có opacity = 0
+ và theo thơi than "bạn tự cho" thì nó sẽ dẫn lên opacity = 1 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes growTh {
+    from {
+        transform: scale(var(--growTh-from));
+    }
+    to {
+        transform: scale(var(--growTh-to));
+
+    }
+}
+
+/* Modal */
+.modal {
+    position: fixed; /* Để cho thằng modal chiếm hết màn hình */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    display: none;
+}
+
+.modal__overlay {
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.modal__body {
+    position: relative;
+    margin: auto;
+    z-index: 1;
+    --growTh-from: 0.75;
+    --growTh-to: 1;
+    animation: growTh linear 0.2s;
+}
+
+/* Button style */ 
+.btn {
+    min-width: 142px;
+    height: 34px;
+    text-decoration: none;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.5rem;
+    padding: 0px 12px;
+    outline: none;
+    cursor: pointer;
+    color: var(--text-color);
+    /* font-weight: bold; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.6rem;   /* để lẽ thì nút "TRỞ LẠI" và "ĐĂNG KÝ, ĐĂNG NHẬP" sẽ ko căng giữa theo trục Y được */ 
+}
+
+.btn-group {
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.btn.btn-nomal:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Chấm dính nhau là cái element phải có cả hai class này */
+.btn.btn--primary { 
+    color: var(--white-color);
+    background-color: var(--primary--color);
+}
+
+.btn.btn--size-s {
+    height: 32px;
+    font-size: 10px;
+}
+
+/* Vô hiệu hóa nút đăng ký */
+.btn.btn--disabled {
+    color: #949494;
+    cursor: default;
+    background-color: #c3c3c3;
+}
+
+.select-input {
+    position: relative;
+    min-width: 200px;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.select-input:hover .select-input__list {
+    display: block;
+}
+
+.select-input::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 10px;
+    /* background-color: blue; */
+    position: absolute;
+    right: 0;
+    top: 100%;
+}
+
+.select-input__label {
+    font-size: 1.3rem;
+    color: var(--text-color);
+}
+
+.select-input__label-icon {
+    color: var(--text-color);
+    font-size: 1.3rem;
+}
+.select-input__list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 78%;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    padding-left: 0;
+    list-style: none;
+    padding: 8px 16px;
+    display: none;
+    z-index: 1;
+}
+
+.select-input__item {
+    
+}
+
+.select-input__link {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: var(--text-color);
+    height: 34px;
+    line-height: 34px;
+    display: block;
+}
+
+.select-input__link:hover {
+    color: var(--primary--color);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.pagination-item {
+    margin: 0 12px;
+}
+
+.pagination-item--active .pagination-item__link {
+    background-color: var(--primary--color);
+    color: var(--white-color);
+}
+
+.pagination-item--active:hover .pagination-item__link {
+    opacity: 0.8;
+}
+
+.pagination-item__link {
+    display: block;
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #939393;
+    min-width: 42px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.pagination-item__icon {
+
+}
+
+.mar-btm-20 {
+    margin-bottom: 20px;
+}
+

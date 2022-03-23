@@ -27,44 +27,52 @@ class CartItem extends Component {
         return (
             
             <tr className="">
-            <th scope="grid-row">
-                <img className="cart-item-image" src={item.product.image} alt={item.product.name}/>
-            </th>
-            <td >
-                <h3>
-                <strong>{item.product.name}</strong>
-                </h3>
-            </td>
-            <td className="cart-product-table">{item.product.currentPrice}$</td>
-            <td className="cart-product-table">
-                <span className="">{quantity} </span>
-                <div className="btn-group" data-toggle="buttons">
-                <label 
-                className="btn btn--primary btn-rounded waves-effect waves-light"
-                onClick={() => this.onUpdateQuantity(item.product, item.quantity - 1)}
-                >
-                    <a className="cart-product-table">—</a>
-                </label>
-                <label 
-                className="btn btn--primary"
-                onClick={() => this.onUpdateQuantity(item.product, item.quantity + 1)}
-                >
-                    <a className="cart-product-table">+</a>
-                </label>
-                </div>
-            </td>
-            <td className="cart-product-table">{this.showSubTotal(item.product.currentPrice, item.quantity)}$</td>
-            <td >
-                <button 
-                type="button" 
-                className="btn btn--primary" data-toggle="tooltip"
-                data-placement="top" 
-                title data-original-title="Remove item"
-                onClick={() => this.onDelete(item.product)}
-                >
-                Xóa
-                </button>
-            </td>
+                <th scope="grid-row">
+                    <img className="cart-item-image" src={item.product.image} alt={item.product.name}/>
+                </th>
+
+                <td >
+                    <h3>
+                    <strong>{item.product.name}</strong>
+                    </h3>
+                </td>
+
+                <td className="cart-product-table">
+                    {item.product.currentPrice}$
+                </td>
+                
+                <td className="cart-product-table">
+                    <span className="">{quantity} </span>
+                    <div className="btn-group" data-toggle="buttons">
+                    <label 
+                    className="btn btn--primary"
+                    onClick={() => this.onUpdateQuantity(item.product, item.quantity - 1)}
+                    >
+                        <a className="cart-product-table">—</a>
+                    </label>
+                    <label 
+                    className="btn btn--primary"
+                    onClick={() => this.onUpdateQuantity(item.product, item.quantity + 1)}
+                    >
+                        <a className="cart-product-table">+</a>
+                    </label>
+                    </div>
+                </td>
+                    
+                <td className="cart-product-table">
+                    {this.showSubTotal(item.product.currentPrice, item.quantity)}$
+                </td>
+                <td>
+                    <button 
+                    type="button" 
+                    className="btn btn--primary" data-toggle="tooltip"
+                    data-placement="top" 
+                    title data-original-title="Remove item"
+                    onClick={() => this.onDelete(item.product)}
+                    >
+                    Xóa
+                    </button>
+                </td>
             </tr>
         )
     }

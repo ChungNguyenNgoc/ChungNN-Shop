@@ -14,7 +14,7 @@ class App extends Component {
         var result = null;
         if(routes.length > 0) {
             result = routes.map((route, index) => {
-                return(
+                return( 
                     <Route 
                         key={index}
                         path={route.path} 
